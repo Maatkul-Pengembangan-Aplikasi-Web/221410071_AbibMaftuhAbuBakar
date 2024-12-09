@@ -22,7 +22,9 @@ class ProdiController extends Controller
 
         // Kembalikan view dengan data prodis
         return view('prodi.index', compact('prodis', 'search'));
+        return view('mahasiswa.index');
     }
+    
 
     public function create()
     {
