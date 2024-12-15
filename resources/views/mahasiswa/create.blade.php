@@ -1,11 +1,9 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Tambah Data Mahasiswa') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (session()->has('error'))
@@ -20,7 +18,7 @@
                         <div class="row mb-3">
                             <div class="col"> Nama Lengkap
                                 <input type="text" name="nama" class="form-control"
-                                    placeholder="Ria Fitriani">
+                                    placeholder="Abib Maftuh Abu Bakar">
                                 @error('nama')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -28,7 +26,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col"> NPM
-                                <input type="number" name="npm" class="form-control" placeholder="221410074">
+                                <input type="number" name="npm" class="form-control" placeholder="221410071">
                                 @error('npm')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -55,7 +53,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="d-grid">
                                 <button class="btn btn-primary">Simpan</button>

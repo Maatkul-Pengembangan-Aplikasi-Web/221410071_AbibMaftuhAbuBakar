@@ -1,11 +1,9 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Tambah Data Mahasiswa') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (session()->has('error'))
@@ -28,7 +26,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <div class="col"> NPM
                                 <input type="number" name="npm" class="form-control" placeholder="191410001"
@@ -38,7 +35,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="prodi" class="form-label">Program Studi</label>
@@ -55,7 +51,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         @if ($mahasiswa->foto)
                             <div class="mb-3">
                                 <img src="{{ asset('fotomahasiswa/' . $mahasiswa->foto) }}" width="100">
@@ -69,7 +64,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="d-grid">
                                 <button class="btn btn-primary">Simpan</button>
