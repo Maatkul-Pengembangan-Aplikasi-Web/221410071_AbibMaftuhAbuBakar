@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
-use App\Models\Prodi;
 use Illuminate\Http\Request;
+use App\Models\Prodi;
+
 
 class MahasiswaController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
         $search = $request->input('search');
@@ -17,6 +20,9 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', compact('mahasiswas', 'search'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $prodis = Prodi::all();
@@ -49,9 +55,25 @@ class MahasiswaController extends Controller
         }
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-    public function show(Mahasiswa $mahasiswa) {}
+    /**
+     * Display the specified resource.
+     */
+    public function show(Mahasiswa $mahasiswa)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
@@ -59,7 +81,9 @@ class MahasiswaController extends Controller
         return view('mahasiswa.edit', compact('mahasiswa', 'prodis'));
     }
 
-
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, $id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
@@ -74,13 +98,12 @@ class MahasiswaController extends Controller
 
         // Proses upload gambar baru
         if ($request->hasFile('foto')) {
-            $namaFoto = $request->npm . '.' . $request->foto->extension();
-            $request->foto->move(public_path('fotomahasiswa'), $namaFoto);
-
             // Hapus gambar lama jika ada
             if ($mahasiswa->foto && file_exists(public_path('fotomahasiswa/' . $mahasiswa->foto))) {
-            unlink(public_path('fotomahasiswa/' . $mahasiswa->foto));
+                unlink(public_path('fotomahasiswa/' . $mahasiswa->foto));
             }
+            $namaFoto = $request->npm . '.' . $request->foto->extension();
+            $request->foto->move(public_path('fotomahasiswa'), $namaFoto);
 
             // Set gambar baru
             $mahasiswa->foto = $namaFoto;
@@ -97,6 +120,15 @@ class MahasiswaController extends Controller
         return redirect(route('/mahasiswa'));
     }
 
+
+    /**
+     * Update the specified resource in storage.
+     */
+   
+
+    /**
+     * Remove the specified resource from storage.
+     */
     public function delete($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
@@ -104,14 +136,14 @@ class MahasiswaController extends Controller
         // Hapus gambar jika ada
         if ($mahasiswa->foto) {
             if (file_exists(public_path('fotomahasiswa/' . $mahasiswa->foto))) {
-            unlink(public_path('fotomahasiswa/' . $mahasiswa->foto));
+                unlink(public_path('fotomahasiswa/' . $mahasiswa->foto));
             }
         }
 
-    // Hapus produk
-    $mahasiswa->delete();
+        // Hapus produk
+        $mahasiswa->delete();
 
-    session()->flash('success', 'Data Mahasiswa Berhasil di Hapus');
-    return redirect(route('/mahasiswa'));
+        session()->flash('success', 'Data Mahasiswa Berhasil di Hapus');
+        return redirect(route('/mahasiswa'));
     }
 }
