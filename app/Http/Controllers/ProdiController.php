@@ -35,7 +35,7 @@ class ProdiController extends Controller
             'nama' => $request->nama
         ]);
 
-        return redirect()->route('/prodi')->with('success', 'Program Studi berhasil ditambahkan');
+        return redirect()->route('/prodi')->with('success', 'Data Tersimpan');
     }
 
     public function edit($id)
