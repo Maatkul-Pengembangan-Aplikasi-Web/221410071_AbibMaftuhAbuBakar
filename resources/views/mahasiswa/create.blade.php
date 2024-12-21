@@ -18,7 +18,7 @@
                         <div class="row mb-3">
                             <div class="col"> Nama Lengkap
                                 <input type="text" name="nama" class="form-control"
-                                    placeholder="abib maftuh abu bakar">
+                                    placeholder="Ria Fitriani">
                                 @error('nama')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
